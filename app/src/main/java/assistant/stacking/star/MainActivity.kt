@@ -10,5 +10,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    // This is a test! (Tom Weeks)
+    // https://developer.android.com/studio/releases/?utm_source=android-studio&utm_medium=studio-assistant
 }
