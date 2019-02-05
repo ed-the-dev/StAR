@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">StAR</string>
+    <string name="star">StAR</string>
+    <string name="begin">Begin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
