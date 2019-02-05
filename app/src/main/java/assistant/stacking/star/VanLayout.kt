@@ -16,12 +16,6 @@ import android.widget.Button
 
 class VanLayout : Fragment() {
 
-    // var fab = findViewById(R.id.button) as FloatingActionButton
-
-    // var btnconnect = R.id.btnconnect as Button
-
-    //private lateinit var btnconnect: Button
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,15 +23,7 @@ class VanLayout : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 
-        ///*
-
         val view: View = inflater.inflate(assistant.stacking.star.R.layout.fragment_van_layout, container, false)
-
-        // btnconnect = findViewById(assistant.stacking.star.R.id.btnconn) as Button
-
-        // btnconnect = findViewById(assistant.stacking.star.R.id.btnconn) as Button
-
-
 
         view.btnconn.setOnClickListener { view ->
             val intent = Intent(context, Connection::class.java);
@@ -45,9 +31,6 @@ class VanLayout : Fragment() {
         }
         return view
 
-
-
-        //return inflater.inflate(assistant.stacking.star.R.layout.fragment_van_layout, container, false)
     }
 
 
