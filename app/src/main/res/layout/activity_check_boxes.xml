@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+    <CheckBox
+        android:id="@+id/checkbox1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="parcel 1"
+        android:padding="12dp"
+        android:checked="true"
+        android:onClick="onCheckboxClicked"/>
+
+    <CheckBox
+        android:id="@+id/checkbox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="parcel 2"
+        android:padding="12dp"
+        android:checked="true"
+        android:onClick="onCheckboxClicked"/>
+
+
+
+
+    <CheckBox
+        android:id="@+id/checkbox3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 3" />
+
+    <CheckBox
+        android:id="@+id/checkbox4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 4" />
+    <CheckBox
+        android:id="@+id/checkbox5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 5" />
+    <CheckBox
+        android:id="@+id/checkbox6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 6" />
+    <CheckBox
+        android:id="@+id/checkbox7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 7" />
+    <CheckBox
+        android:id="@+id/checkbox8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCheckboxClicked"
+        android:padding="12dp"
+        android:checked="true"
+        android:text="parcel 8" />
+
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="50dp"
+        android:text="Confirm" />
+
+</LinearLayout>

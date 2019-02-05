@@ -14,11 +14,22 @@
         <activity android:name=".Menu">
         </activity>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+        </activity>
+        <activity android:name=".CheckBoxes">
+
+
+        </activity>
+        <activity
+                android:name=".Reorder"
+                android:label="@string/star">
+
         </activity>
     </application>
 
