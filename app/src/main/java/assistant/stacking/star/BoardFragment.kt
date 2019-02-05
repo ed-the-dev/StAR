@@ -171,7 +171,7 @@ class BoardFragment : Fragment() {
         val column = mColumns
         val listAdapter = ItemAdapter(mItemArray, R.layout.column_item, R.id.item_layout, true)
         val header = View.inflate(activity, R.layout.column_header, null)
-        (header.findViewById<View>(R.id.text) as TextView).text = "ColumnHeaderText " + (mColumns + 1)
+
         if (parcels!=null) {
             (header.findViewById<View>(R.id.item_count) as TextView).text = "" + parcels!!.size
         }

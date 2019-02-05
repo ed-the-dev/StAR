@@ -22,6 +22,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import android.widget.Toolbar
+import kotlinx.android.synthetic.main.connection.*
+import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.reorder.*
 
 
 class Reorder : AppCompatActivity() {
@@ -31,6 +35,8 @@ class Reorder : AppCompatActivity() {
         setContentView(R.layout.reorder)
         parcels=intent.getStringArrayListExtra("parcelsList")
         Toast.makeText(this,"${parcels?.toString()}",Toast.LENGTH_SHORT)
+
+        setSupportActionBar(my_toolbar)
 
         if (savedInstanceState == null) {
             showFragment(BoardFragment.newInstance())

@@ -37,11 +37,9 @@ class ListFragment : Fragment() {
             startActivity(intent)
         }
 
-        view.checkbox1.setOnClickListener {
 
-        }
 
-        view.checkbox2.setOnCheckedChangeListener{buttonView, isChecked ->
+        view.checkbox1.setOnCheckedChangeListener{buttonView, isChecked ->
             if (isChecked) {
                 assistant.stacking.star.parcels?.add("parcel 1")
             } else {
@@ -49,87 +47,68 @@ class ListFragment : Fragment() {
             }
             Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
         }
+        view.checkbox2.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 2")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 2")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox3.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 3")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 3")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox4.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 4")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 4")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox5.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 5")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 5")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox6.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 6")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 6")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox7.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 7")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 7")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+        view.checkbox8.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                assistant.stacking.star.parcels?.add("parcel 8")
+            } else {
+                assistant.stacking.star.parcels?.remove("parcel 8")
+            }
+            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+        }
+
 
         return view
     }
 
-    fun onCheckboxClicked(view: View) {
-        if (view is CheckBox) {
-            val checked: Boolean = view.isChecked
 
-            when (view.id) {
-                R.id.checkbox1 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 1")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 1")
-                    }
-                }
-                R.id.checkbox1 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 1")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 1")
-                    }
-                }
-                R.id.checkbox2 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 2")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 2")
-                    }
-                }
-                R.id.checkbox3 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 3")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 3")
-                    }
-                }
-                R.id.checkbox4 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 4")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 4")
-                    }
-                }
-                R.id.checkbox4 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 4")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 4")
-                    }
-                }
-                R.id.checkbox5 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 5")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 5")
-                    }
-                }
-                R.id.checkbox6 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 6")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 6")
-                    }
-                }
-                R.id.checkbox7 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 7")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 7")
-                    }
-                }
-                R.id.checkbox8 -> {
-                    if (checked) {
-                        assistant.stacking.star.parcels?.add("parcel 8")
-                    } else {
-                        assistant.stacking.star.parcels?.remove("parcel 8")
-                    }
-                }
-            }
-        }
 
-    }
+
 }
