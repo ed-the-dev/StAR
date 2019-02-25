@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 
-var parcels:ArrayList<String>? = arrayListOf("parcel 1","parcel 2","parcel 3","parcel 4","parcel 5","parcel 6","parcel 7","parcel 8")
+
 class CheckBoxes : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class CheckBoxes : AppCompatActivity() {
         confirmButton.setOnClickListener {
             parcels?.sort()
             var intent=Intent(this,Reorder::class.java)
-            intent.putExtra("parcelsList", parcels)
+
             startActivity(intent)
         }
     }
@@ -27,74 +27,62 @@ class CheckBoxes : AppCompatActivity() {
             val checked: Boolean = view.isChecked
 
             when (view.id) {
-                R.id.checkbox1 -> {
+                R.id.checkbox01 -> {
                     if (checked) {
-                        parcels?.add("parcel 1")
+                        parcels?.add("P01")
                     } else {
-                        parcels?.remove("parcel 1")
+                        parcels?.remove("P01")
                     }
                 }
-                R.id.checkbox1 -> {
+
+                R.id.checkbox02 -> {
                     if (checked) {
-                        parcels?.add("parcel 1")
+                        parcels?.add("P02")
                     } else {
-                        parcels?.remove("parcel 1")
+                        parcels?.remove("P02")
                     }
                 }
-                R.id.checkbox2 -> {
+                R.id.checkbox03 -> {
                     if (checked) {
-                        parcels?.add("parcel 2")
+                        parcels?.add("P03")
                     } else {
-                        parcels?.remove("parcel 2")
+                        parcels?.remove("P03")
                     }
                 }
-                R.id.checkbox3 -> {
+                R.id.checkbox04 -> {
                     if (checked) {
-                        parcels?.add("parcel 3")
+                        parcels?.add("P04")
                     } else {
-                        parcels?.remove("parcel 3")
+                        parcels?.remove("P04")
                     }
                 }
-                R.id.checkbox4 -> {
+
+                R.id.checkbox05 -> {
                     if (checked) {
-                        parcels?.add("parcel 4")
+                        parcels?.add("P05")
                     } else {
-                        parcels?.remove("parcel 4")
+                        parcels?.remove("P05")
                     }
                 }
-                R.id.checkbox4 -> {
+                R.id.checkbox06 -> {
                     if (checked) {
-                        parcels?.add("parcel 4")
+                        parcels?.add("P06")
                     } else {
-                        parcels?.remove("parcel 4")
+                        parcels?.remove("P06")
                     }
                 }
-                R.id.checkbox5 -> {
+                R.id.checkbox07 -> {
                     if (checked) {
-                        parcels?.add("parcel 5")
+                        parcels?.add("P07")
                     } else {
-                        parcels?.remove("parcel 5")
+                        parcels?.remove("P07")
                     }
                 }
-                R.id.checkbox6 -> {
+                R.id.checkbox08 -> {
                     if (checked) {
-                        parcels?.add("parcel 6")
+                        parcels?.add("P08")
                     } else {
-                        parcels?.remove("parcel 6")
-                    }
-                }
-                R.id.checkbox7 -> {
-                    if (checked) {
-                        parcels?.add("parcel 7")
-                    } else {
-                        parcels?.remove("parcel 7")
-                    }
-                }
-                R.id.checkbox8 -> {
-                    if (checked) {
-                        parcels?.add("parcel 8")
-                    } else {
-                        parcels?.remove("parcel 8")
+                        parcels?.remove("P08")
                     }
                 }
             }

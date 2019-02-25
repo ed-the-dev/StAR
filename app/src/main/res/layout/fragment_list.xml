@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
+
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
@@ -8,93 +11,214 @@
              android:layout_marginTop="?attr/actionBarSize"
              tools:context=".ListFragment">
 
+
+
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-
-
-
-
-
-        <CheckBox
-                android:id="@+id/checkbox1"
+        <EditText
+                android:id="@+id/search_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="parcel 1"
-                android:padding="12dp"
-                android:checked="true"
+                android:layout_height="50dp"
+                android:hint="Search parcel"
+                android:inputType="textNoSuggestions"
+        />
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="400dp">
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:id="@+id/checkboxes_layout"
+                          android:orientation="vertical"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+
+
+
+
+
+
+                <CheckBox
+                        android:id="@+id/checkbox01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
                 />
 
-        <CheckBox
-                android:id="@+id/checkbox2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="parcel 2"
-                android:padding="12dp"
-                android:checked="true"
+                <CheckBox
+                        android:id="@+id/checkbox02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
                 />
 
 
 
 
-        <CheckBox
-                android:id="@+id/checkbox3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <CheckBox
+                        android:id="@+id/checkbox03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 3" />
+                        android:padding="12dp"
+                        android:checked="false"
+                         />
 
-        <CheckBox
-                android:id="@+id/checkbox4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <CheckBox
+                        android:id="@+id/checkbox04"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 4" />
-        <CheckBox
-                android:id="@+id/checkbox5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 5" />
-        <CheckBox
-                android:id="@+id/checkbox6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 6" />
-        <CheckBox
-                android:id="@+id/checkbox7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 7" />
-        <CheckBox
-                android:id="@+id/checkbox8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:checked="true"
-                android:text="parcel 8" />
+                        android:padding="12dp"
+                        android:checked="false"
+                         />
+                <CheckBox
+                        android:id="@+id/checkbox05"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
+                        />
+                <CheckBox
+                        android:id="@+id/checkbox06"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
+                        android:text="parcel 6" />
+                <CheckBox
+                        android:id="@+id/checkbox07"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
+                         />
+                <CheckBox
+                        android:id="@+id/checkbox08"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:checked="false"
+                         />
+                <CheckBox
 
-        <Button
-                android:id="@+id/button_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginTop="50dp"
-                android:text="Confirm" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+                <CheckBox
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="parcel 1"
+                        android:padding="12dp"
+                        android:checked="false"
+                />
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="150dp"
+                      android:orientation="vertical">
+
+            <Button
+                    android:id="@+id/button_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Confirm"
+            />
+
+            <Button android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/button_done"
+                    android:text="Done"
+                    android:visibility="gone"
+            />
+        </LinearLayout>
 
     </LinearLayout>
 
 </FrameLayout>
-

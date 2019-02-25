@@ -33,8 +33,8 @@ class Reorder : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reorder)
-        parcels=intent.getStringArrayListExtra("parcelsList")
-        Toast.makeText(this,"${parcels?.toString()}",Toast.LENGTH_SHORT)
+
+
 
         setSupportActionBar(my_toolbar)
 
@@ -69,7 +69,7 @@ class Reorder : AppCompatActivity() {
             /* case R.id.action_lists:
                 showFragment(ListFragment.newInstance());
                 return true;*/
-            R.id.action_board -> {
+            R.id.action_board2 -> {
                 showFragment(BoardFragment.newInstance())
                 return true
             }

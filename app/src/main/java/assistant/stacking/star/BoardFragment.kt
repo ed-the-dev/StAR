@@ -119,7 +119,7 @@ class BoardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
       //  (activity as AppCompatActivity).supportActionBar!!.title = "Star app"
-
+        System.out.println("test"+ parcels?.size)
         addColumn()
 
     }
@@ -160,6 +160,7 @@ class BoardFragment : Fragment() {
 
     private fun addColumn() {
         val mItemArray = ArrayList<Pair<Long, String>>()
+        System.out.println("gamw"+ parcels?.size)
         if (parcels!=null){
             for (i in 0 until parcels!!.size) {
                 val id = i.toLong()

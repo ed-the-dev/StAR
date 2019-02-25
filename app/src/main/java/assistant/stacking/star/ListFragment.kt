@@ -7,15 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
-
-import android.widget.Button
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.CheckBox
-import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_list.*
+
 import kotlinx.android.synthetic.main.fragment_list.view.*
+var parcels:MutableList<String>? = ArrayList()
 
 class ListFragment : Fragment() {
 
-    var parcels:ArrayList<String>? = arrayListOf("parcel 1","parcel 2","parcel 3","parcel 4","parcel 5","parcel 6","parcel 7","parcel 8")
+
 
     // on Nik's the initialisation of parcels is above class
 
@@ -26,83 +30,179 @@ class ListFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_list, container, false)
+        var ch=ArrayList<View>()
+        for (i in (0..1)){
+            for (j in (0..9)){
+                if (i==0 &&j==0){
+                    continue
+                }
+                var n=i.toString()+j.toString()
+                var ll=view.checkboxes_layout
+
+                var v = ll.getChildAt(10*(i)+j-1)
+                if (v is CheckBox){
+                    ch.add(v)
+                    var checkBoxText="P"+n
+                    if (i==0){
+                        checkBoxText+="    27/2/2019"
+                    }
+                    else{
+                        checkBoxText+="    28/2/2019"
+                    }
+                    when (j.rem(3)){
+                        0->{
+                            checkBoxText+="    High"
+                        }
+                        1->{
+                            checkBoxText+="    Medium"
+                        }
+                        2->{
+                            checkBoxText+="    Low"
+                        }
+                    }
+                    v.text=checkBoxText
+                }
+
+
+            }
+        }
+        view.search_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                var ll=view.checkboxes_layout
+                when (s.toString()){
+                    ""->{
+
+                        for (i in(0..ch.size-1)){
+                            ch.get(i).visibility= VISIBLE
+                        }
+                        view.button_done.visibility=GONE
+
+                    }
+                    else->{
+                        for (i in(0..ll.childCount)) {
+                            var v =ll.getChildAt(i)
+                            if (v is CheckBox){
+                                if (v.text.substring(0,s.toString().length)==s.toString()){
+                                    v.visibility= VISIBLE
+                                }else{
+                                    v.visibility= GONE
+                                }
+                            }
+
+
+                        }
+                        view.button_done.visibility= VISIBLE
+
+                    }
+
+                }
+            }
+        })
+
+
 
         // var confirmButton = (R.id.button_confirm)
         view.button_confirm.setOnClickListener {
-            assistant.stacking.star.parcels?.sort()
+            parcels?.sort()
             // var intent=Intent(this,Reorder::class.java) // old stuff
 
             val intent = Intent(context,Reorder::class.java)
-            intent.putExtra("parcelsList", assistant.stacking.star.parcels)
+            //intent.putExtra("parcelsList", assistant.stacking.star.parcels)
             startActivity(intent)
         }
+        view.button_done.setOnClickListener{
+            view.search_text.setText("")
+        }
 
 
+        ch.forEach{
 
-        view.checkbox1.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 1")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 1")
+            if (it is CheckBox){
+
+                it.setOnCheckedChangeListener{_,isChecked ->
+                    System.out.println("mpenei")
+                    if (isChecked) {
+                        System.out.println(it.text.toString())
+                        parcels?.add(it.text.toString())
+                        System.out.println(parcels?.size)
+                    } else {
+                        parcels?.remove(it.text.toString())
+                    }
+                }
             }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
         }
-        view.checkbox2.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 2")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 2")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox3.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 3")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 3")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox4.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 4")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 4")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox5.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 5")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 5")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox6.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 6")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 6")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox7.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 7")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 7")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
-        view.checkbox8.setOnCheckedChangeListener{buttonView, isChecked ->
-            if (isChecked) {
-                assistant.stacking.star.parcels?.add("parcel 8")
-            } else {
-                assistant.stacking.star.parcels?.remove("parcel 8")
-            }
-            Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-        }
+//        view.checkbox01.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P01")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P01")
+//            }
+//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox02.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P02")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P02")
+//            }
+//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox03.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P03")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P03")
+//            }
+//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox04.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P04")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P04")
+//            }
+//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox05.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P05")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P05")
+//            }
+//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox06.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P06")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P06")
+//            }
+//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox07.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P07")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P07")
+//            }
+//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        view.checkbox08.setOnCheckedChangeListener{buttonView, isChecked ->
+//            if (isChecked) {
+//                assistant.stacking.star.parcels?.add("P08")
+//            } else {
+//                assistant.stacking.star.parcels?.remove("P08")
+//            }
+//            //Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
+//        }
 
 
         return view
