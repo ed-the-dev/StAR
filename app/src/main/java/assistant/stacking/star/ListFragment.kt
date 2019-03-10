@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.CheckBox
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_list.*
 
 import kotlinx.android.synthetic.main.fragment_list.view.*
@@ -43,20 +44,34 @@ class ListFragment : Fragment() {
                 if (v is CheckBox){
                     ch.add(v)
                     var checkBoxText="P"+n
-                    if (i==0){
-                        checkBoxText+="    27/2/2019"
+
+                    if (i==0 &&(j<4)){
+                        checkBoxText+="    13/3/2019"
+                    }
+                    else if (i==0 &&j<7){
+                        checkBoxText+="    14/3/2019"
+                    }
+
+                    else if ( i==0 ){
+                        checkBoxText+="    015/3/2019"
+                    }
+                    else if ( i==1 && j<3){
+                        checkBoxText+="    16/3/2019"
+                    }
+                    else if ( i==1 && j<7){
+                        checkBoxText+="    17/3/2019"
                     }
                     else{
-                        checkBoxText+="    28/2/2019"
+                        checkBoxText+="    18/3/2019"
                     }
-                    when (j.rem(3)){
-                        0->{
+                    when ((10*i+j).rem(3)){
+                        1->{
                             checkBoxText+="    High"
                         }
-                        1->{
+                        2->{
                             checkBoxText+="    Medium"
                         }
-                        2->{
+                        0->{
                             checkBoxText+="    Low"
                         }
                     }
@@ -90,7 +105,7 @@ class ListFragment : Fragment() {
                         for (i in(0..ll.childCount)) {
                             var v =ll.getChildAt(i)
                             if (v is CheckBox){
-                                if (v.text.substring(0,s.toString().length)==s.toString()){
+                                if (v.text.substring(0,s.toString().length).toLowerCase()==s.toString().toLowerCase()){
                                     v.visibility= VISIBLE
                                 }else{
                                     v.visibility= GONE
@@ -111,11 +126,15 @@ class ListFragment : Fragment() {
 
         // var confirmButton = (R.id.button_confirm)
         view.button_confirm.setOnClickListener {
+            if (parcels.isNullOrEmpty()){
+                Toast.makeText(context,"select at least one parcel",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             parcels?.sort()
             // var intent=Intent(this,Reorder::class.java) // old stuff
 
             val intent = Intent(context,Reorder::class.java)
-            //intent.putExtra("parcelsList", assistant.stacking.star.parcels)
+
             startActivity(intent)
         }
         view.button_done.setOnClickListener{
@@ -128,13 +147,18 @@ class ListFragment : Fragment() {
             if (it is CheckBox){
 
                 it.setOnCheckedChangeListener{_,isChecked ->
-                    System.out.println("mpenei")
+
                     if (isChecked) {
-                        System.out.println(it.text.toString())
-                        parcels?.add(it.text.toString())
-                        System.out.println(parcels?.size)
+
+                        if ((parcels!=null)&& !(parcels!!.contains(it.text.toString()))) {
+
+                            parcels?.add(it.text.toString())
+                            System.out.println(parcels?.size)
+                        }
                     } else {
-                        parcels?.remove(it.text.toString())
+                        if (parcels!!.contains(it.text.toString())) {
+                            parcels?.remove(it.text.toString())
+                        }
                     }
                 }
             }

@@ -70,7 +70,8 @@ class BoardFragment : Fragment() {
             override fun onItemDragEnded(fromColumn: Int, fromRow: Int, toColumn: Int, toRow: Int) {
                 if (fromColumn != toColumn || fromRow != toRow) {
 
-                    Toast.makeText(context, "from row $fromRow to row $toRow", Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(context, "from row $fromRow to row $toRow", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"item succesfully moved",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -119,7 +120,6 @@ class BoardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
       //  (activity as AppCompatActivity).supportActionBar!!.title = "Star app"
-        System.out.println("test"+ parcels?.size)
         addColumn()
 
     }
@@ -160,7 +160,7 @@ class BoardFragment : Fragment() {
 
     private fun addColumn() {
         val mItemArray = ArrayList<Pair<Long, String>>()
-        System.out.println("gamw"+ parcels?.size)
+
         if (parcels!=null){
             for (i in 0 until parcels!!.size) {
                 val id = i.toLong()

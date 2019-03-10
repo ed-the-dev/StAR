@@ -51,6 +51,7 @@ class Reorder : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
         menuInflater.inflate(R.menu.menu_main_nik, menu)
         return true
     }
@@ -66,12 +67,15 @@ class Reorder : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            /* case R.id.action_lists:
-                showFragment(ListFragment.newInstance());
-                return true;*/
+
             R.id.action_board2 -> {
+                println("tets")
+                Toast.makeText(this,"test",Toast.LENGTH_SHORT).show()
                 showFragment(BoardFragment.newInstance())
-                return true
+            }
+            R.id.action_lists->{
+                println("gamw")
+                Toast.makeText(this,"touto doulefkei",Toast.LENGTH_SHORT).show()
             }
         }
 

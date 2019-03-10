@@ -28,7 +28,7 @@
         />
 
         <ScrollView android:layout_width="match_parent"
-                    android:layout_height="400dp">
+                    android:layout_height="401dp">
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                           android:id="@+id/checkboxes_layout"
                           android:orientation="vertical"
@@ -206,7 +206,7 @@
             <Button
                     android:id="@+id/button_confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:text="Confirm"
             />

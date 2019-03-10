@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
+import assistant.stacking.star.notifications.fragment_notifications
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             R.id.parcel_selection -> fragmentClass = ListFragment::class.java
             R.id.van_layout -> fragmentClass = VanLayout::class.java
             R.id.manage_warehouse -> fragmentClass = ManageWarehouseFragment::class.java
+            R.id.notifications -> fragmentClass= fragment_notifications::class.java
             else -> fragmentClass = ListFragment::class.java
         }
 
