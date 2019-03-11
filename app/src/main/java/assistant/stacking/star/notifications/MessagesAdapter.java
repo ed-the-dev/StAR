@@ -173,7 +173,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             holder.iconBack.setVisibility(View.VISIBLE);
             holder.iconBack.setAlpha(1);
             if (currentSelectedIndex == position) {
-                FlipAnimator.flipView(mContext, holder.iconBack, holder.iconFront, true);
+                FlipAnimator.INSTANCE.flipView(mContext, holder.iconBack, holder.iconFront, true);
                 resetCurrentIndex();
             }
         } else {
@@ -182,7 +182,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             holder.iconFront.setVisibility(View.VISIBLE);
             holder.iconFront.setAlpha(1);
             if ((reverseAllAnimations && animationItemsIndex.get(position, false)) || currentSelectedIndex == position) {
-                FlipAnimator.flipView(mContext, holder.iconBack, holder.iconFront, false);
+                FlipAnimator.INSTANCE.flipView(mContext, holder.iconBack, holder.iconFront, false);
                 resetCurrentIndex();
             }
         }
