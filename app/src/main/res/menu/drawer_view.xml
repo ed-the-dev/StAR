@@ -10,13 +10,13 @@
         <item
                 android:id="@+id/manage_warehouse"
                 android:title="Manage Warehouse" />
-        <item
+        <!--<item
                 android:id="@+id/notifications"
                 android:title="Notifications" />
         <item
                 android:id="@+id/help"
                 android:title="Help"
-                                    />
+                                    />-->
 
     </group>
 </menu>

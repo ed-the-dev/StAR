@@ -19,7 +19,7 @@
       tools:context=".Reorder">
     <item
         android:id="@+id/action_lists"
-        android:title="help"
+        android:title="Help"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_board2"

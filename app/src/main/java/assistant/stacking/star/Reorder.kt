@@ -16,8 +16,10 @@
 
 package assistant.stacking.star
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -27,13 +29,14 @@ import kotlinx.android.synthetic.main.connection.*
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.reorder.*
 
-
+private var builder:AlertDialog.Builder?=null
 class Reorder : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reorder)
 
+       showHelp()
 
 
         setSupportActionBar(my_toolbar)
@@ -70,16 +73,27 @@ class Reorder : AppCompatActivity() {
 
             R.id.action_board2 -> {
                 println("tets")
-                Toast.makeText(this,"test",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Order sent to robot",Toast.LENGTH_SHORT).show()
+                //temporarily move to notifications for demo
                 showFragment(BoardFragment.newInstance())
             }
             R.id.action_lists->{
-                println("gamw")
-                Toast.makeText(this,"touto doulefkei",Toast.LENGTH_SHORT).show()
+
+                showHelp()
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+    fun showHelp(){
+        builder =AlertDialog.Builder(this)
+        builder?.setTitle("Reorder parcels ")
+        builder?.setMessage(" \n Change the order that parcels are to be placed in the van " +
+                "\n Parcels are the top are to be placed first" +
+                "\n to reorder a parcel long tap on it and then move it on desired row" +
+                "\n When done , click 'send to robot'  ")
+        builder?.setNeutralButton("OK") { _: DialogInterface, _: Int -> }
+        builder?.show()
     }
 }
 

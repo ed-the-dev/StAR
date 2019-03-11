@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             R.id.parcel_selection -> fragmentClass = ListFragment::class.java
             R.id.van_layout -> fragmentClass = VanLayout::class.java
             R.id.manage_warehouse -> fragmentClass = ManageWarehouseFragment::class.java
-            R.id.notifications -> fragmentClass= fragment_notifications::class.java
+           // R.id.notifications -> fragmentClass= fragment_notifications::class.java
             else -> fragmentClass = ListFragment::class.java
         }
 

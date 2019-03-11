@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 import kotlinx.android.synthetic.main.fragment_list.view.*
 var parcels:MutableList<String>? = ArrayList()
+var showHelp:Boolean=true
 
 class ListFragment : Fragment() {
 
@@ -134,7 +135,7 @@ class ListFragment : Fragment() {
             parcels?.sort()
             // var intent=Intent(this,Reorder::class.java) // old stuff
 
-            val intent = Intent(context, fragment_notifications::class.java)
+            val intent = Intent(context, Reorder::class.java)
 
             startActivity(intent)
         }
