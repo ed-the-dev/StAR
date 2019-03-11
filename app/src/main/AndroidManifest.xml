@@ -23,7 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".notifications.fragment_notifications">
+        <activity android:name=".notifications.fragment_notifications"
+
+        >
+
         </activity>
         <activity
                 android:name=".Reorder"

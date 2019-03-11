@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,9 +40,11 @@ public class fragment_notifications extends AppCompatActivity implements SwipeRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setContentView(R.layout.activity_notifications);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_notifications);
         setSupportActionBar(toolbar);
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);

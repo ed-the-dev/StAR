@@ -13,6 +13,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.CheckBox
 import android.widget.Toast
+import assistant.stacking.star.notifications.fragment_notifications
 import kotlinx.android.synthetic.main.fragment_list.*
 
 import kotlinx.android.synthetic.main.fragment_list.view.*
@@ -133,7 +134,7 @@ class ListFragment : Fragment() {
             parcels?.sort()
             // var intent=Intent(this,Reorder::class.java) // old stuff
 
-            val intent = Intent(context,Reorder::class.java)
+            val intent = Intent(context, fragment_notifications::class.java)
 
             startActivity(intent)
         }
