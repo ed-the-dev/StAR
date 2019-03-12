@@ -83,7 +83,14 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
                         var notification= Message()
                         notification.from=n
                         notification.color=getRandomMaterialColor("200")
-                        notification.timestamp="13 March"
+                        var time =Calendar.getInstance().get(Calendar.HOUR_OF_DAY).toString()+":"
+                        if ((Calendar.getInstance().get(Calendar.MINUTE))>9){
+                            time+=Calendar.getInstance().get(Calendar.MINUTE).toString()
+                        }
+                        else {
+                            time+="0"+Calendar.getInstance().get(Calendar.MINUTE).toString()
+                        }
+                        notification.timestamp=time
                         notification.id=current_id
                         messages.add(0,notification)
                         current_id++
@@ -120,11 +127,11 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
                 // TODO - avoid looping
                 // the loop was performed to add colors to each message
-             /*     for ( message in response.body()) {
+                  for ( message in response.body()) {
                     // generate a random color
                     message.color=(getRandomMaterialColor("400"));
                     messages.add(message);
-                }*/
+                }
 
 
                 swipeRefreshLayout!!.isRefreshing = false
@@ -310,3 +317,4 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
 
 }
+

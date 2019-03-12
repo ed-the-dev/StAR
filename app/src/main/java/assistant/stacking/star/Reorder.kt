@@ -16,6 +16,7 @@
 
 package assistant.stacking.star
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -25,9 +26,15 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import android.widget.Toolbar
+import assistant.stacking.star.notifications.notifications_string
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.connection.*
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.reorder.*
+import java.util.*
 
 private var builder:AlertDialog.Builder?=null
 class Reorder : AppCompatActivity() {
@@ -73,10 +80,49 @@ class Reorder : AppCompatActivity() {
 
             R.id.action_board2 -> {
                 println("tets")
-                Toast.makeText(this,"Order sent to robot",Toast.LENGTH_SHORT).show()
-                //temporarily move to notifications for demo
-                showFragment(BoardFragment.newInstance())
+
+                var url = "http://veemon:5000/setinstructions?inst="
+                if (parcels!!.get(0)!!.contains("P01")) {
+                    url += 11
+                } else if (parcels!!.get(0)!!.contains("P02")) {
+                    url += 12
+                } else {
+                    Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                }
+
+                val beforeTime = Calendar.getInstance().time
+                //   val mTextView = findViewById<View>(R.id.textView) as TextView
+                // Instantiate the RequestQueue.
+                val queue = Volley.newRequestQueue(baseContext)
+                //String url = "http://leconte:5000/sendinstruction?inst=True";
+                //final String url = ((EditText)findViewById(R.id.editText)).getText().toString();
+
+                // Request a string response from the provided URL.
+                val stringRequest = StringRequest(
+                    Request.Method.GET,
+                    url,
+                    Response.Listener { response ->
+                        //append notifications
+                        notifications_string += response
+                        // Display the first 500 characters of the response string.
+                        val afterTime = Calendar.getInstance().time
+                        val difference = afterTime.time - beforeTime.time
+                        Toast.makeText(this, "order sent to robot", Toast.LENGTH_SHORT).show()
+                    },
+                    Response.ErrorListener { error ->
+                        Toast.makeText(
+                            this,
+                            "No response from $url\n$error",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    })
+                // Add the request to the RequestQueue.
+                queue.add(stringRequest)
             }
+
+        //temporarily move to notifications for demo
+
+
             R.id.action_lists->{
 
                 showHelp()

@@ -20,10 +20,12 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import android.support.v4.os.HandlerCompat.postDelayed
+import java.util.*
 
 
 var parcels:MutableList<String>? = ArrayList()
 var showHelp:Boolean=true
+var maxCapacity:Int=1
 
 class ListFragment : Fragment() {
 
@@ -82,9 +84,20 @@ class ListFragment : Fragment() {
                             checkBoxText+="    Low"
                         }
                     }
+                    //demo 3 only
+                    if (i==0 && ((j==1)||j==2)){
+
+                        checkBoxText+="Available"
+                        //CHANGE COLOR OF UNAVAILABLE PARCELS
+                        v.setTextColor(Color.parseColor("#008000"))
+
+                    }
+                    else{
+                        checkBoxText+="(Unavailable)"
+                        v.setTextColor(Color.parseColor("#FF0000"))
+                    }
                     v.text=checkBoxText
-                    //CHANGE COLOR OF UNAVAILABLE PARCELS
-                   // v.setBackgroundColor(Color.parseColor("#000000"))
+
                 }
 
 
@@ -158,13 +171,28 @@ class ListFragment : Fragment() {
                 it.setOnCheckedChangeListener{_,isChecked ->
 
                     if (isChecked) {
-
-                        if ((parcels!=null)&& !(parcels!!.contains(it.text.toString()))) {
-
-                            parcels?.add(it.text.toString())
-                            System.out.println(parcels?.size)
+                        //demo 3 only
+                        if (parcels?.size== maxCapacity) {
+                            it.isChecked = false
+                            Toast.makeText(context, "max capacity of van is $maxCapacity", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
+                            else{
+                                if ((it.text.toString().contains("P01"))||(it.text.toString().contains("P02"))) {
+
+                                    if ((parcels != null) && !(parcels!!.contains(it.text.toString()))) {
+
+                                        parcels?.add(it.text.toString())
+                                    }
+                                }
+                                else{ // parcel unavailable
+                                    it.isChecked=false
+                                    Toast.makeText(context,"parcel is unavailable for this demo",Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                        }
+
+                     else {
                         if (parcels!!.contains(it.text.toString())) {
                             parcels?.remove(it.text.toString())
                         }
