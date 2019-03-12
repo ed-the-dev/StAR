@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
+import android.graphics.Color
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +19,9 @@ import assistant.stacking.star.notifications.fragment_notifications
 import kotlinx.android.synthetic.main.fragment_list.*
 
 import kotlinx.android.synthetic.main.fragment_list.view.*
+import android.support.v4.os.HandlerCompat.postDelayed
+
+
 var parcels:MutableList<String>? = ArrayList()
 var showHelp:Boolean=true
 
@@ -78,6 +83,8 @@ class ListFragment : Fragment() {
                         }
                     }
                     v.text=checkBoxText
+                    //CHANGE COLOR OF UNAVAILABLE PARCELS
+                   // v.setBackgroundColor(Color.parseColor("#000000"))
                 }
 
 
@@ -165,6 +172,7 @@ class ListFragment : Fragment() {
                 }
             }
         }
+
 //        view.checkbox01.setOnCheckedChangeListener{buttonView, isChecked ->
 //            if (isChecked) {
 //                assistant.stacking.star.parcels?.add("P01")

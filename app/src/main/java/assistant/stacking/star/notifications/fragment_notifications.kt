@@ -1,8 +1,10 @@
 package assistant.stacking.star.notifications
 
+import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
@@ -16,17 +18,23 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
-
-import java.util.ArrayList
 
 
 import assistant.stacking.star.R
 import assistant.stacking.star.notifications.MessagesAdapter
+import com.android.volley.Request
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+
+var notifications_string:String=""
 
 class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener,
     MessagesAdapter.MessageAdapterListener {
@@ -61,6 +69,35 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
         // show loader and fetch messages
         swipeRefreshLayout!!.post { getInbox() }
+        val handler = Handler()
+        val delay = 5000 //milliseconds
+
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                val url="http://veemon:5000/getnotifications"
+
+                getNotifications(url,baseContext)
+                var current_id=10
+                if (!notifications_string.isNullOrEmpty()){
+                    for(n in notifications_string.split(";") ){
+                        var notification= Message()
+                        notification.from=n
+                        notification.color=getRandomMaterialColor("200")
+                        notification.timestamp="13 March"
+                        notification.id=current_id
+                        messages.add(0,notification)
+                        current_id++
+
+                    }
+                    notifications_string=""
+                }
+
+
+
+                mAdapter!!.notifyDataSetChanged()
+                handler.postDelayed(this, delay.toLong())
+            }
+        }, delay.toLong())
     }
 
     /**
@@ -76,30 +113,20 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         call.enqueue(object : Callback<List<Message>> {
             override fun onResponse(call: Call<List<Message>>, response: Response<List<Message>>) {
                 // clear the inbox
-                messages.clear()
+               // messages.clear()
 
                 // add all the messages
                 // messages.addAll(response.body());
 
                 // TODO - avoid looping
                 // the loop was performed to add colors to each message
-                /*  for (Message message : response.body()) {
+             /*     for ( message in response.body()) {
                     // generate a random color
-                    message.setColor(getRandomMaterialColor("400"));
+                    message.color=(getRandomMaterialColor("400"));
                     messages.add(message);
                 }*/
-                val sample = Message()
-                sample.from = "test"
-                sample.id = 8
-                sample.color = 100
-                sample.message = "message"
-                sample.picture = "noPicture"
-                sample.timestamp = "13 March"
-                sample.isImportant = false
-                sample.subject = "subject"
-                messages.add(sample)
 
-                mAdapter!!.notifyDataSetChanged()
+
                 swipeRefreshLayout!!.isRefreshing = false
             }
 
@@ -256,4 +283,30 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         }
         mAdapter!!.notifyDataSetChanged()
     }
+
+    fun getNotifications(url: String, context: Context) {
+
+        val beforeTime = Calendar.getInstance().time
+     //   val mTextView = findViewById<View>(R.id.textView) as TextView
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(context)
+        //String url = "http://leconte:5000/sendinstruction?inst=True";
+        //final String url = ((EditText)findViewById(R.id.editText)).getText().toString();
+
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            com.android.volley.Response.Listener { response ->
+                //append notifications
+                notifications_string+=response
+                // Display the first 500 characters of the response string.
+                val afterTime = Calendar.getInstance().time
+                val difference = afterTime.time - beforeTime.time
+               // mTextView.text = "Response: $response\nResponse time:$difference"
+            }, com.android.volley.Response.ErrorListener { error -> Toast.makeText(this, "No response from $url\n$error",Toast.LENGTH_SHORT).show() })
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
+    }
+
+
 }
