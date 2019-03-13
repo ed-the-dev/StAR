@@ -66,9 +66,39 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         recyclerView!!.adapter = mAdapter
 
         actionModeCallback = ActionModeCallback()
+        var  m1 =  Message()
+        m1.from= "QR code does not match"
+        m1.subject= "Parcel P02 not found , assistance required "
+        m1.message="click here to take action"
+        m1.timestamp="12:14"
+        m1.id=0
+        messages.add(m1)
+        var  m2 =  Message()
+        m2.from= "obstacle detected"
+        m2.subject= "robot stopped moving , assistance required "
+        m2.message="click here to take action"
+        m2.timestamp="12:15"
+        m2.id=1
+        messages.add(0,m2)
 
+        var  m3 =  Message()
+        m3.from= "delivery succesful"
+        m3.subject= "Parcels P02 and P08 succesfully placed in van "
+
+        m3.timestamp="12:18"
+        m3.id=2
+        messages.add(0,m3)
+        var  m4 =  Message()
+        m4.from= "low battery"
+        m4.subject= "charge required "
+        m4.message="click here to shut down robot"
+        m4.timestamp="12:19"
+        m4.id=1
+
+        messages.add(0,m4)
+        mAdapter!!.notifyDataSetChanged()
         // show loader and fetch messages
-        swipeRefreshLayout!!.post { getInbox() }
+       // swipeRefreshLayout!!.post { getInbox() }
         val handler = Handler()
         val delay = 5000 //milliseconds
 

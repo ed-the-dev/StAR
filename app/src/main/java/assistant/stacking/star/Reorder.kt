@@ -18,6 +18,7 @@ package assistant.stacking.star
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -26,6 +27,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import android.widget.Toolbar
+import assistant.stacking.star.notifications.fragment_notifications
 import assistant.stacking.star.notifications.notifications_string
 import com.android.volley.Request
 import com.android.volley.Response
@@ -118,6 +120,9 @@ class Reorder : AppCompatActivity() {
                     })
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest)
+                val intent = Intent(this, fragment_notifications::class.java)
+
+                startActivity(intent)
             }
 
         //temporarily move to notifications for demo
