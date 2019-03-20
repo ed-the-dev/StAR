@@ -66,7 +66,7 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         recyclerView!!.adapter = mAdapter
 
         actionModeCallback = ActionModeCallback()
-        var  m1 =  Message()
+       /* var  m1 =  Message()
         m1.from= "QR code does not match"
         m1.subject= "Parcel P02 not found , assistance required "
         m1.message="click here to take action"
@@ -96,7 +96,7 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         m4.id=1
 
         messages.add(0,m4)
-        mAdapter!!.notifyDataSetChanged()
+        mAdapter!!.notifyDataSetChanged()*/
         // show loader and fetch messages
        // swipeRefreshLayout!!.post { getInbox() }
         val handler = Handler()

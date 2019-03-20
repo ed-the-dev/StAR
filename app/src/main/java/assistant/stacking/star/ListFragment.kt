@@ -21,11 +21,13 @@ import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import android.support.v4.os.HandlerCompat.postDelayed
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 var parcels:MutableList<String>? = ArrayList()
 var showHelp:Boolean=true
 var maxCapacity:Int=1
+val list = arrayListOf<Int>()
 
 class ListFragment : Fragment() {
 
@@ -41,12 +43,21 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_list, container, false)
         var ch=ArrayList<View>()
+        var  availability ="(Available)"
+        list.addAll(listOf(0,1,2,3,4,5,6))
         for (i in (0..1)){
             for (j in (0..9)){
                 if (i==0 &&j==0){
                     continue
                 }
-                var n=i.toString()+j.toString()
+                var n:String
+                if (i==1) {
+                    n = i.toString() + j.toString()
+                }else{
+                    n=j.toString()
+                }
+
+
                 var ll=view.checkboxes_layout
 
                 var v = ll.getChildAt(10*(i)+j-1)
@@ -86,8 +97,7 @@ class ListFragment : Fragment() {
                     }
                     //demo 3 only
                     if (i==0 && ((j==1)||j==2)){
-
-                        checkBoxText+="Available"
+                        checkBoxText+=availability
                         //CHANGE COLOR OF UNAVAILABLE PARCELS
                         v.setTextColor(Color.parseColor("#008000"))
 
@@ -177,11 +187,11 @@ class ListFragment : Fragment() {
                             Toast.makeText(context, "max capacity of van is $maxCapacity", Toast.LENGTH_SHORT).show()
                         }
                             else{
-                                if ((it.text.toString().contains("P01"))||(it.text.toString().contains("P02"))) {
+                                if ((it.text.toString().contains(availability))) {
 
-                                    if ((parcels != null) && !(parcels!!.contains(it.text.toString()))) {
+                                    if (parcels?.contains(it.text.toString())==true) {
 
-                                        parcels?.add(it.text.toString())
+                                        parcels?.add(it.text.toString().substring(0,it.text.toString().length-availability.length))
                                     }
                                 }
                                 else{ // parcel unavailable
