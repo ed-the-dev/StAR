@@ -26,7 +26,7 @@ import kotlin.collections.ArrayList
 
 var parcels:MutableList<String>? = ArrayList()
 var showHelp:Boolean=true
-var maxCapacity:Int=1
+var maxCapacity:Int=6
 val list = arrayListOf<Int>()
 
 class ListFragment : Fragment() {
@@ -96,7 +96,7 @@ class ListFragment : Fragment() {
                         }
                     }
                     //demo 3 only
-                    if (i==0 && ((j==1)||j==2)){
+                    if (i==0 && ((j<7))){
                         checkBoxText+=availability
                         //CHANGE COLOR OF UNAVAILABLE PARCELS
                         v.setTextColor(Color.parseColor("#008000"))
@@ -189,7 +189,7 @@ class ListFragment : Fragment() {
                             else{
                                 if ((it.text.toString().contains(availability))) {
 
-                                    if (parcels?.contains(it.text.toString())==true) {
+                                    if (parcels?.contains(it.text.toString())==false) {
 
                                         parcels?.add(it.text.toString().substring(0,it.text.toString().length-availability.length))
                                     }
@@ -211,70 +211,7 @@ class ListFragment : Fragment() {
             }
         }
 
-//        view.checkbox01.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P01")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P01")
-//            }
-//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox02.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P02")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P02")
-//            }
-//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox03.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P03")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P03")
-//            }
-//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox04.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P04")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P04")
-//            }
-//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox05.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P05")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P05")
-//            }
-//          //  Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox06.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P06")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P06")
-//            }
-//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox07.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P07")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P07")
-//            }
-//           // Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
-//        view.checkbox08.setOnCheckedChangeListener{buttonView, isChecked ->
-//            if (isChecked) {
-//                assistant.stacking.star.parcels?.add("P08")
-//            } else {
-//                assistant.stacking.star.parcels?.remove("P08")
-//            }
-//            //Toast.makeText(context, isChecked.toString(), Toast.LENGTH_SHORT).show()
-//        }
+//
 
 
         return view

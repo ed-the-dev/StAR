@@ -11,7 +11,6 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <activity android:name=".Connection">
         </activity>
         <activity android:name=".Menu">
@@ -23,10 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".notifications.fragment_notifications"
-
-        >
-
+        <activity android:name=".notifications.fragment_notifications">
         </activity>
         <activity
                 android:name=".Reorder"
@@ -34,6 +30,8 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".Storage">
         </activity>
     </application>
 

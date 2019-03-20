@@ -39,6 +39,7 @@ import kotlinx.android.synthetic.main.reorder.*
 import java.util.*
 
 private var builder:AlertDialog.Builder?=null
+private var tuples :String=""
 class Reorder : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,16 +82,16 @@ class Reorder : AppCompatActivity() {
         when (item.itemId) {
 
             R.id.action_board2 -> {
-                println("tets")
+                parcels?.forEach {
+                    val parcelNumber=it.get(1).toString().toInt()
+
+                    println("parcel number is $parcelNumber")
+                    tuples=tuples+"($parcelNumber,${list.get(parcelNumber)})"
+                    println(tuples)
+                }
 
                 var url = "http://veemon:5000/setinstructions?inst="
-                if (parcels!!.get(0)!!.contains("P01")) {
-                    url += 11
-                } else if (parcels!!.get(0)!!.contains("P02")) {
-                    url += 12
-                } else {
-                    Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
-                }
+                url+=tuples
 
                 val beforeTime = Calendar.getInstance().time
                 //   val mTextView = findViewById<View>(R.id.textView) as TextView

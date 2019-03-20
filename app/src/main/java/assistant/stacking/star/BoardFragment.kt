@@ -70,7 +70,12 @@ class BoardFragment : Fragment() {
             override fun onItemDragEnded(fromColumn: Int, fromRow: Int, toColumn: Int, toRow: Int) {
                 if (fromColumn != toColumn || fromRow != toRow) {
 
-                   // Toast.makeText(context, "from row $fromRow to row $toRow", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "from row $fromRow to row $toRow", Toast.LENGTH_SHORT).show()
+                    var temp=parcels!![fromRow]
+                    parcels!![fromRow]=parcels!![(toRow)]
+                    parcels!![toRow]=temp
+
+                    println("parcels are $parcels")
                     Toast.makeText(context,"item succesfully moved",Toast.LENGTH_SHORT).show()
                 }
             }
