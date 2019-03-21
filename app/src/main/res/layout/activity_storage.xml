@@ -6,10 +6,165 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Storage">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="152dp"
-            tools:layout_editor_absoluteX="31dp" android:id="@+id/textView4"/>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="550dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="700dp">
+
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Parcel ID"
+                    android:textSize="25dp"
+                    android:textAlignment="center"
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P1"
+                    android:textSize="25dp"
+
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P2"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P3"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P4"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P5"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="P6"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+
+            />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Expected shelve"
+                    android:textSize="25dp"></android.support.v7.widget.AppCompatTextView>
+
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_1"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_2"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_3"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_4"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_5"
+                    android:textAlignment="center"
+
+            />
+            <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="75dp"
+                    android:id="@+id/editText_6"
+                    android:textAlignment="center"
+
+            />
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+        <Button
+                android:text="Confirm"
+                android:layout_width="242dp"
+                android:layout_height="58dp"
+                android:id="@+id/button_confirm_storage"
+                android:layout_marginLeft="90dp"
+        />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

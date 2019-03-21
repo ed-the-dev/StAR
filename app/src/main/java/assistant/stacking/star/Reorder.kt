@@ -40,13 +40,16 @@ import java.util.*
 
 private var builder:AlertDialog.Builder?=null
 private var tuples :String=""
+private var message:String=""
 class Reorder : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reorder)
-
-       showHelp()
+        if (showHelp) {
+            showHelp()
+            showHelp=false
+        }
 
 
         setSupportActionBar(my_toolbar)
@@ -82,48 +85,7 @@ class Reorder : AppCompatActivity() {
         when (item.itemId) {
 
             R.id.action_board2 -> {
-                parcels?.forEach {
-                    val parcelNumber=it.get(1).toString().toInt()
-
-                    println("parcel number is $parcelNumber")
-                    tuples=tuples+"($parcelNumber,${list.get(parcelNumber)})"
-                    println(tuples)
-                }
-
-                var url = "http://veemon:5000/setinstructions?inst="
-                url+=tuples
-
-                val beforeTime = Calendar.getInstance().time
-                //   val mTextView = findViewById<View>(R.id.textView) as TextView
-                // Instantiate the RequestQueue.
-                val queue = Volley.newRequestQueue(baseContext)
-                //String url = "http://leconte:5000/sendinstruction?inst=True";
-                //final String url = ((EditText)findViewById(R.id.editText)).getText().toString();
-
-                // Request a string response from the provided URL.
-                val stringRequest = StringRequest(
-                    Request.Method.GET,
-                    url,
-                    Response.Listener { response ->
-                        //append notifications
-                        notifications_string += response
-                        // Display the first 500 characters of the response string.
-                        val afterTime = Calendar.getInstance().time
-                        val difference = afterTime.time - beforeTime.time
-                        Toast.makeText(this, "order sent to robot", Toast.LENGTH_SHORT).show()
-                    },
-                    Response.ErrorListener { error ->
-                        Toast.makeText(
-                            this,
-                            "No response from $url\n$error",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    })
-                // Add the request to the RequestQueue.
-                queue.add(stringRequest)
-                val intent = Intent(this, fragment_notifications::class.java)
-
-                startActivity(intent)
+                showConfirm()
             }
 
         //temporarily move to notifications for demo
@@ -145,6 +107,65 @@ class Reorder : AppCompatActivity() {
                 "\n to reorder a parcel long tap on it and then move it on desired row" +
                 "\n When done , click 'send to robot'  ")
         builder?.setNeutralButton("OK") { _: DialogInterface, _: Int -> }
+        builder?.show()
+    }
+
+    fun showConfirm(){
+        var i=1
+        parcels?.forEach {
+
+            val parcelNumber=it.get(1).toString().toInt()
+
+            println("parcel number is $parcelNumber")
+            tuples=tuples+"($parcelNumber,${list.get(parcelNumber)})"
+            message+="$i)Parcel $parcelNumber expected in shelve ${list.get(parcelNumber)}\n"
+            i++
+        }
+
+        var url = "http://veemon:5000/setinstructions?inst="
+        url+=tuples
+        builder =AlertDialog.Builder(this)
+        builder?.setTitle("Please confirm order and expected shelves ")
+        builder?.setMessage("$message")
+        builder?.setPositiveButton("Confirm") { _: DialogInterface, _: Int ->
+
+
+            val beforeTime = Calendar.getInstance().time
+
+            val queue = Volley.newRequestQueue(baseContext)
+
+            val stringRequest = StringRequest(
+                Request.Method.GET,
+                url,
+                Response.Listener { response ->
+                    //append notifications
+                    notifications_string += response
+                    // Display the first 500 characters of the response string.
+                    val afterTime = Calendar.getInstance().time
+                    val difference = afterTime.time - beforeTime.time
+                    Toast.makeText(this, "order sent to robot", Toast.LENGTH_SHORT).show()
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(
+                        this,
+                        "No response from $url\n$error",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                })
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest)
+            val intent = Intent(this, fragment_notifications::class.java)
+
+            startActivity(intent)
+        }
+        builder?.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+        }
+        builder?.setNeutralButton("Manage shelves ") { _: DialogInterface, _: Int ->
+            val intent = Intent(this, Storage::class.java)
+
+            startActivity(intent)
+        }
+
         builder?.show()
     }
 }
