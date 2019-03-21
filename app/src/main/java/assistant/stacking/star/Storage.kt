@@ -16,15 +16,19 @@ class Storage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_storage)
-       /* editText_1.setText(list.get(1)).toString()
-        editText_2.setText(list.get(2)).toString()
-        editText_3.setText(list.get(3)).toString()
-        editText_4.setText(list.get(4)).toString()
-        editText_5.setText(list.get(5)).toString()
-        editText_6.setText(list.get(6)).toString()*/
+        editText_1.setText(list.get(1).toString())
+        editText_2.setText(list.get(2).toString())
+        editText_3.setText(list.get(3).toString())
+        editText_4.setText(list.get(4).toString())
+        editText_5.setText(list.get(5).toString())
+        editText_6.setText(list.get(6).toString())
 
         button_confirm_storage.setOnClickListener{
-            if (list.distinct().size<6){
+            println(list)
+            println(list.distinct())
+            println(list.distinct().size)
+            if (list.distinct().size!=7){
+
                 Toast.makeText(this,"No more than one parcel can be at each shelve",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -34,10 +38,13 @@ class Storage : AppCompatActivity() {
             list[4]=editText_4.text.toString().toInt()
             list[5]=editText_5.text.toString().toInt()
             list[6]=editText_6.text.toString().toInt()
+            println(list)
 
-            val intent = Intent(this, Storage::class.java)
 
+            val intent = Intent(this, Reorder::class.java)
+            finish()
             startActivity(intent)
+
         }
     }
 

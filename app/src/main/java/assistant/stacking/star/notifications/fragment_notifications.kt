@@ -35,7 +35,7 @@ import retrofit2.Response
 import java.util.*
 
 var notifications_string:String=""
-
+var showError=true
 class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener,
     MessagesAdapter.MessageAdapterListener {
     private val messages = ArrayList<Message>()
@@ -66,9 +66,9 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         recyclerView!!.adapter = mAdapter
 
         actionModeCallback = ActionModeCallback()
-       /* var  m1 =  Message()
+        var  m1 =  Message()
         m1.from= "QR code does not match"
-        m1.subject= "Parcel P02 not found , assistance required "
+        m1.subject= "Parcel P2 not found , assistance required "
         m1.message="click here to take action"
         m1.timestamp="12:14"
         m1.id=0
@@ -83,7 +83,7 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
         var  m3 =  Message()
         m3.from= "delivery succesful"
-        m3.subject= "Parcels P02 and P08 succesfully placed in van "
+        m3.subject= "Parcels P2 and P8 succesfully placed in van "
 
         m3.timestamp="12:18"
         m3.id=2
@@ -96,11 +96,11 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         m4.id=1
 
         messages.add(0,m4)
-        mAdapter!!.notifyDataSetChanged()*/
+        mAdapter!!.notifyDataSetChanged()
         // show loader and fetch messages
        // swipeRefreshLayout!!.post { getInbox() }
         val handler = Handler()
-        val delay = 5000 //milliseconds
+        val delay = 1000 //milliseconds
 
         handler.postDelayed(object : Runnable {
             override fun run() {
@@ -340,7 +340,21 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
                 val afterTime = Calendar.getInstance().time
                 val difference = afterTime.time - beforeTime.time
                // mTextView.text = "Response: $response\nResponse time:$difference"
-            }, com.android.volley.Response.ErrorListener { error -> Toast.makeText(this, "No response from $url\n$error",Toast.LENGTH_SHORT).show() })
+            }, com.android.volley.Response.ErrorListener { error ->
+                if (showError){
+                    Toast.makeText(this, "No response from $url\n$error",Toast.LENGTH_SHORT).show()
+                    showError=false
+                    var  merror =  Message()
+                    merror.from= "No connection to server"
+                    merror.subject= "   "
+                    merror.message="Please make sure that you are connected to the same network as the robot"
+                    merror.timestamp=""
+                    merror.id=404
+                    messages.add(merror)
+                }
+
+
+            })
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
     }

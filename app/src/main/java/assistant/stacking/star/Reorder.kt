@@ -112,6 +112,7 @@ class Reorder : AppCompatActivity() {
 
     fun showConfirm(){
         var i=1
+        message=""
         parcels?.forEach {
 
             val parcelNumber=it.get(1).toString().toInt()
@@ -155,7 +156,7 @@ class Reorder : AppCompatActivity() {
             // Add the request to the RequestQueue.
             queue.add(stringRequest)
             val intent = Intent(this, fragment_notifications::class.java)
-
+            parcels?.clear()
             startActivity(intent)
         }
         builder?.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
