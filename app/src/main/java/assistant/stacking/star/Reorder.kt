@@ -118,7 +118,7 @@ class Reorder : AppCompatActivity() {
             val parcelNumber=it.get(1).toString().toInt()
 
             println("parcel number is $parcelNumber")
-            tuples=tuples+"($parcelNumber,${list.get(parcelNumber)})"
+            tuples="($parcelNumber,${list.get(parcelNumber)})"+tuples //reverse order
             message+="$i)Parcel $parcelNumber expected in shelve ${list.get(parcelNumber)}\n"
             i++
         }
