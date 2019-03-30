@@ -25,6 +25,9 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import android.widget.Toolbar
 import assistant.stacking.star.notifications.fragment_notifications
@@ -41,6 +44,8 @@ import java.util.*
 private var builder:AlertDialog.Builder?=null
 private var tuples :String=""
 private var message:String=""
+private var reverse:Boolean=true
+private var _menu:Menu?=null
 class Reorder : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +74,7 @@ class Reorder : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.menu_main_nik, menu)
+        _menu=menu
         return true
     }
 
@@ -83,6 +89,26 @@ class Reorder : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+
+            R.id.reverse_false ->{
+                reverse=false
+                reverse=true
+                var reverse_true =_menu!!.findItem(R.id.reverse_true)
+                reverse_true.isVisible=true
+                var reverse_false = _menu!!.findItem(R.id.reverse_false)
+                reverse_false.isVisible= false
+
+
+            }
+
+            R.id.reverse_true ->{
+                reverse=true
+                var reverse_true =_menu!!.findItem(R.id.reverse_true)
+                reverse_true.isVisible=false
+                var reverse_false = _menu!!.findItem(R.id.reverse_false)
+                reverse_false.isVisible= true
+
+            }
 
             R.id.action_board2 -> {
                 showConfirm()
@@ -117,13 +143,26 @@ class Reorder : AppCompatActivity() {
             val parcelNumber=it.get(1).toString().toInt()
 
             println("parcel number is $parcelNumber")
-            tuples=tuples+"($parcelNumber,${list.get(parcelNumber)})"
+            if (reverse){
+                tuples="$parcelNumber,${list.get(parcelNumber)};"+tuples
+            }
+            else{
+                tuples=tuples+"$parcelNumber,${list.get(parcelNumber)};"
+            }
+
+
+
             message+="$i)Parcel $parcelNumber expected in shelve ${list.get(parcelNumber)}\n"
             i++
         }
+        tuples=tuples.substring(0,tuples.length-1) // removes final semicolon
+        println(tuples)
 
-        var url = "http://veemon:5000/setinstructions?inst="
+        var url = "http://hawkmon:5000/setinstructions?inst="
+
         url+=tuples
+
+
         builder =AlertDialog.Builder(this)
         builder?.setTitle("Please confirm order and expected shelves ")
         builder?.setMessage("$message")

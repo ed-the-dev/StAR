@@ -7,11 +7,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:mContext="assistant.stacking.star.notifications.fragment_notifications"
     tools:showIn="@layout/activity_notifications">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
 
+    android:orientation="vertical">
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
 
         tools:ignore="MissingConstraints">
 
@@ -21,6 +24,16 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
 
+
     </android.support.v4.widget.SwipeRefreshLayout>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:scaleY="3"
+                android:layout_height="30dp"
+                android:layout_weight="0"
+                android:id="@+id/progressBar_notifications" android:max="1" android:progress="1"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

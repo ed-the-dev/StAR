@@ -18,12 +18,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 
 
 import assistant.stacking.star.R
 import assistant.stacking.star.notifications.MessagesAdapter
+import assistant.stacking.star.parcels
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
@@ -35,6 +37,8 @@ import retrofit2.Response
 import java.util.*
 
 var notifications_string:String=""
+val number_of_parcels:Int= parcels!!.size //non empty since one parcel is a minimun requirement
+
 
 class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener,
     MessagesAdapter.MessageAdapterListener {
@@ -51,6 +55,9 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         setContentView(R.layout.activity_notifications)
         val toolbar = findViewById<View>(R.id.toolbar_notifications) as Toolbar
         setSupportActionBar(toolbar)
+        var progressBar=findViewById<ProgressBar>(R.id.progressBar_notifications)
+        progressBar.max= number_of_parcels
+        progressBar.progress=0
 
 
 
@@ -104,7 +111,7 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
         handler.postDelayed(object : Runnable {
             override fun run() {
-                val url="http://veemon:5000/getnotifications"
+                val url="http://hawkmon:5000/getnotifications"
 
                 getNotifications(url,baseContext)
                 var current_id=10
@@ -112,6 +119,11 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
                     for(n in notifications_string.split(";") ){
                         var notification= Message()
                         notification.from=n
+                        if (n=="Delivered"){
+
+                            notification.subject="Parcel ${parcels!![progressBar.progress].substring(0,3)} delivered"
+                            progressBar.progress++
+                        }
                         notification.color=getRandomMaterialColor("200")
                         var time =Calendar.getInstance().get(Calendar.HOUR_OF_DAY).toString()+":"
                         if ((Calendar.getInstance().get(Calendar.MINUTE))>9){

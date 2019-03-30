@@ -57,19 +57,19 @@ public class Connection extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                press("http://veemon:5000/setinstructions?inst=1",context);
+                press("http://hawkmon:5000/setinstructions?inst=1",context);
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                press("http://veemon:5000/setinstructions?inst=2",context);
+                press("http://hawkmon:5000/setinstructions?inst=2",context);
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                press("http://veemon:5000/setinstructions?inst=3",context);
+                press("http://hawkmon:5000/setinstructions?inst=3",context);
             }
         });
     }
