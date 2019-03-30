@@ -42,6 +42,7 @@ import kotlinx.android.synthetic.main.reorder.*
 import java.util.*
 
 private var builder:AlertDialog.Builder?=null
+
 private var tuples :String=""
 private var message:String=""
 private var reverse:Boolean=true
@@ -55,6 +56,8 @@ class Reorder : AppCompatActivity() {
             showHelp()
             showHelp=false
         }
+        tuples=""
+        message=""
 
 
         setSupportActionBar(my_toolbar)
@@ -207,5 +210,6 @@ class Reorder : AppCompatActivity() {
 
         builder?.show()
     }
+
 }
 
