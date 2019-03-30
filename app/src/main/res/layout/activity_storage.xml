@@ -11,10 +11,11 @@
     >
 
 
-    <ScrollView android:layout_width="match_parent" android:layout_height="550dp">
+    <ScrollView android:layout_width="match_parent" android:layout_height="550dp"
+                android:isScrollContainer="false">
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="700dp">
+            android:layout_height="match_parent">
 
         <LinearLayout android:layout_width="0dp"
                       android:layout_height="match_parent"
@@ -99,6 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="25dp"
+                    android:inputType="textNoSuggestions"
+
 
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_1"
@@ -113,6 +116,8 @@
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_2"
                     android:textAlignment="center"
+                    android:inputType="textNoSuggestions"
+
 
             />
             <android.support.v7.widget.AppCompatEditText
@@ -123,6 +128,8 @@
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_3"
                     android:textAlignment="center"
+                    android:inputType="textNoSuggestions"
+
 
             />
             <android.support.v7.widget.AppCompatEditText
@@ -133,6 +140,8 @@
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_4"
                     android:textAlignment="center"
+                    android:inputType="textNoSuggestions"
+
 
             />
             <android.support.v7.widget.AppCompatEditText
@@ -143,6 +152,8 @@
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_5"
                     android:textAlignment="center"
+                    android:inputType="textNoSuggestions"
+
 
             />
             <android.support.v7.widget.AppCompatEditText
@@ -153,6 +164,8 @@
                     android:layout_marginRight="75dp"
                     android:id="@+id/editText_6"
                     android:textAlignment="center"
+                    android:inputType="textNoSuggestions"
+
 
             />
 

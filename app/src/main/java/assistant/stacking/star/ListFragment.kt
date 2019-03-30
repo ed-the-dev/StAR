@@ -28,6 +28,7 @@ var parcels:MutableList<String>? = ArrayList()
 var showHelp:Boolean=true
 var maxCapacity:Int=6
 val list = arrayListOf<Int>()
+var listInitialized:Boolean=false
 
 class ListFragment : Fragment() {
 
@@ -44,7 +45,11 @@ class ListFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_list, container, false)
         var ch=ArrayList<View>()
         var  availability ="(Available)"
-        list.addAll(listOf(0,1,2,3,4,5,6))
+        if (listInitialized==false){
+            list.addAll(listOf(0,1,2,3,4,5,6))
+            listInitialized=true
+        }
+
         for (i in (0..1)){
             for (j in (0..9)){
                 if (i==0 &&j==0){
@@ -178,6 +183,7 @@ class ListFragment : Fragment() {
 
             if (it is CheckBox){
 
+
                 it.setOnCheckedChangeListener{_,isChecked ->
 
                     if (isChecked) {
@@ -188,10 +194,10 @@ class ListFragment : Fragment() {
                         }
                             else{
                                 if ((it.text.toString().contains(availability))) {
+                                    var textToAdd=it.text.toString().substring(0,it.text.toString().length-availability.length)
+                                    if (parcels?.contains(textToAdd)==false) {
 
-                                    if (parcels?.contains(it.text.toString())==false) {
-
-                                        parcels?.add(it.text.toString().substring(0,it.text.toString().length-availability.length))
+                                        parcels?.add(textToAdd)
                                     }
                                 }
                                 else{ // parcel unavailable
