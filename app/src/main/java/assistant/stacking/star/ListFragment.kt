@@ -223,6 +223,14 @@ class ListFragment : Fragment() {
         return view
     }
 
+    override fun onDestroyView() {
+        parcels?.clear()
+        super.onDestroyView()
+    }
+
+
+
+
 
 
 

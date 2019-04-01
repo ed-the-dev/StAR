@@ -194,7 +194,7 @@ class Reorder : AppCompatActivity() {
             // Add the request to the RequestQueue.
             queue.add(stringRequest)
             val intent = Intent(this, fragment_notifications::class.java)
-
+            message=""
             startActivity(intent)
         }
         builder?.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
@@ -207,5 +207,7 @@ class Reorder : AppCompatActivity() {
 
         builder?.show()
     }
+
+
 }
 

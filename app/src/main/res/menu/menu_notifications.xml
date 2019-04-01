@@ -4,8 +4,8 @@
     tools:mContext="assistant.stacking.star.notifications.fragment_notifications">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_white_24dp"
+
         android:orderInCategory="100"
-        android:title="search"
-        app:showAsAction="always" />
+        android:title="change pulling rate"
+        app:showAsAction="never" />
 </menu>

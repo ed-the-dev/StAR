@@ -149,6 +149,8 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         }, delay.toLong())
     }
 
+
+
     /**
      * Fetches mail messages by making HTTP request
      * url: http://api.androidhive.info/json/inbox.json
