@@ -40,12 +40,14 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_list, container, false)
         var ch=ArrayList<View>()
         var  availability ="(Available)"
-        if (listInitialized==false){
+        parcels?.clear()//
+        if (list.isNullOrEmpty()){
             list.addAll(listOf(0,1,2,3,4,5,6))
             listInitialized=true
         }
@@ -187,7 +189,6 @@ class ListFragment : Fragment() {
                 it.setOnCheckedChangeListener{_,isChecked ->
 
                     if (isChecked) {
-                        //demo 3 only
                         if (parcels?.size== maxCapacity) {
                             it.isChecked = false
                             Toast.makeText(context, "max capacity of van is $maxCapacity", Toast.LENGTH_SHORT).show()
