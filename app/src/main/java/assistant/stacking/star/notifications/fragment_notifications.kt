@@ -1,6 +1,7 @@
 package assistant.stacking.star.notifications
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.view.ActionMode
 import android.support.v7.widget.DefaultItemAnimator
@@ -218,7 +220,7 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
 
 
         if (id == R.id.action_search) {
-            Toast.makeText(applicationContext, "Search...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "pulling rate is fixed for this demo", Toast.LENGTH_SHORT).show()
             return true
         }
 
@@ -359,6 +361,18 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
         queue.add(stringRequest)
     }
 
+    override fun onBackPressed() {
+        var builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("confirm exit?")
+        builder.setPositiveButton("Confirm") { _: DialogInterface, _: Int ->
 
+        super.onBackPressed()
+        }
+
+        builder.setNegativeButton("cancel") { _: DialogInterface, _: Int ->
+        }
+        builder.show()
+
+    }
 }
 
