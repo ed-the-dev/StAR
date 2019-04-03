@@ -209,10 +209,9 @@ class ListFragment : Fragment() {
 
                         }
 
-                     else {
-                        if (parcels!!.contains(it.text.toString())) {
-                            parcels?.remove(it.text.toString())
-                        }
+                    else {
+                        parcels?.remove(it.text.toString().substring(0,it.text.toString().length-availability.length))
+
                     }
                 }
             }

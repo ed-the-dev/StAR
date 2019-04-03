@@ -133,7 +133,7 @@ class Reorder : AppCompatActivity() {
                 "\n to reorder a parcel long tap on it and then move it on desired row" +
                 "\n When done , click 'send to robot'  ")
         builder?.setNeutralButton("OK") { _: DialogInterface, _: Int -> }
-        builder?.show()
+        //builder?.show()
     }
 
     fun showConfirm(){
@@ -190,7 +190,7 @@ class Reorder : AppCompatActivity() {
                         this,
                         "No response from $url\n$error",
                         Toast.LENGTH_SHORT
-                    ).show()
+                    )//.show()
                 })
             // Add the request to the RequestQueue.
             queue.add(stringRequest)

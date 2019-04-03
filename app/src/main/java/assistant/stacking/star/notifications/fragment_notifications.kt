@@ -356,7 +356,8 @@ class fragment_notifications : AppCompatActivity(), SwipeRefreshLayout.OnRefresh
                 val afterTime = Calendar.getInstance().time
                 val difference = afterTime.time - beforeTime.time
                // mTextView.text = "Response: $response\nResponse time:$difference"
-            }, com.android.volley.Response.ErrorListener { error -> Toast.makeText(this, "No response from $url\n$error",Toast.LENGTH_SHORT).show() })
+                var no=1
+            }, com.android.volley.Response.ErrorListener { error ->  })
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
     }
