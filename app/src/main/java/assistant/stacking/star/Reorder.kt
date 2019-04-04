@@ -199,11 +199,11 @@ class Reorder : AppCompatActivity() {
         }
         builder?.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
         }
-        builder?.setNeutralButton("Manage shelves ") { _: DialogInterface, _: Int ->
+        /*builder?.setNeutralButton("Manage shelves ") { _: DialogInterface, _: Int ->
             val intent = Intent(this, Storage::class.java)
 
             startActivity(intent)
-        }
+        }*/
 
         builder?.show()
     }

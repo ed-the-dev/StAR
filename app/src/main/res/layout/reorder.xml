@@ -31,7 +31,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
     <android.support.v7.widget.AppCompatTextView android:layout_width="match_parent" android:layout_height="30dp"
                                                  android:layout_weight="0"
-                                                 android:text="LONG TAP TO REORDER"
+                                                 android:text="Hold and drag to reorder"
                                                  android:textAlignment="center"
                                                  android:textSize="24dp"
     />

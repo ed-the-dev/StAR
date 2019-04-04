@@ -73,23 +73,23 @@ class ListFragment : Fragment() {
                     var checkBoxText="P"+n
 
                     if (i==0 &&(j<4)){
-                        checkBoxText+="    13/3/2019"
+                        checkBoxText+="    4/4/2019"
                     }
                     else if (i==0 &&j<7){
-                        checkBoxText+="    14/3/2019"
+                        checkBoxText+="    5/4/2019"
                     }
 
                     else if ( i==0 ){
-                        checkBoxText+="    015/3/2019"
+                        checkBoxText+="    6/4/2019"
                     }
                     else if ( i==1 && j<3){
-                        checkBoxText+="    16/3/2019"
+                        checkBoxText+="    7/4/2019"
                     }
                     else if ( i==1 && j<7){
-                        checkBoxText+="    17/3/2019"
+                        checkBoxText+="    8/4/2019"
                     }
                     else{
-                        checkBoxText+="    18/3/2019"
+                        checkBoxText+="    9/4/2019"
                     }
                     when ((10*i+j).rem(3)){
                         1->{
