@@ -72,12 +72,32 @@ class BoardFragment : Fragment() {
                 if (fromColumn != toColumn || fromRow != toRow) {
 
                     //Toast.makeText(context, "from row $fromRow to row $toRow", Toast.LENGTH_SHORT).show()
-                    var temp=parcels!![fromRow]
-                    parcels!![fromRow]=parcels!![(toRow)]
-                    parcels!![toRow]=temp
+
+                    if (fromRow>toRow) {
+                        //parcel moved up ,move parcels below it one place down
+
+                        for (j in (fromRow downTo toRow+1 )) {
+
+                            var temp = parcels!![j-1]
+                            parcels!![j-1] = parcels!![j]
+                            parcels!![j] = temp
+                        }
+                    }else { // parcel moved down , move parcels above it one place
+                        for (j in (fromRow..toRow-1 )) {
+
+                            var temp = parcels!![j+1]
+                            parcels!![j+1] = parcels!![j]
+                            parcels!![j]=temp
+                        }
+
+                    }
+
+
+
+
 
                     println("parcels are $parcels")
-                    Toast.makeText(context,"item succesfully moved",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"item succesfully moved !",Toast.LENGTH_SHORT).show()
                 }
             }
 

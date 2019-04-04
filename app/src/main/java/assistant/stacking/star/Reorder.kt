@@ -138,6 +138,7 @@ class Reorder : AppCompatActivity() {
 
     fun showConfirm(){
         message=""
+        tuples=""
         var i=1
         parcels?.forEach {
 
@@ -162,7 +163,7 @@ class Reorder : AppCompatActivity() {
         var url = "http://hawkmon:5000/setinstructions?inst="
 
         url+=tuples
-
+        println("url is $url")
 
         builder =AlertDialog.Builder(this)
         builder?.setTitle("Please confirm order and expected shelves ")
