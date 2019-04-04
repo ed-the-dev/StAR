@@ -13,23 +13,37 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
 
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/list_item_background"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <android.support.v7.widget.AppCompatTextView android:layout_width="match_parent" android:layout_height="30dp"
+                                                 android:layout_weight="0"
+                                                 android:text="LONG TAP TO REORDER"
+                                                 android:textAlignment="center"
+                                                 android:textSize="24dp"
+    />
+<FrameLayout
              android:id="@+id/container"
              android:layout_width="match_parent"
-             android:layout_height="match_parent">
+             android:layout_height="0dp"
+             android:layout_weight="1">
 
 
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/my_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/list_item_background"
-                android:elevation="4dp"
-                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
 
 
 
@@ -39,3 +53,5 @@
 
 
 </FrameLayout>
+
+</LinearLayout>

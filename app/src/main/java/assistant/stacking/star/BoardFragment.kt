@@ -29,6 +29,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
@@ -180,6 +181,7 @@ class BoardFragment : Fragment() {
 
         if (parcels!=null) {
             (header.findViewById<View>(R.id.item_count) as TextView).text = "" + parcels!!.size
+            header.visibility=GONE
         }
         /* header.setOnClickListener(new View.OnClickListener() {
             @Override
